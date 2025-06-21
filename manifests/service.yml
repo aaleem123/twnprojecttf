@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: bootcamp-node-svc
+  namespace: bootcamp
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: nlb
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+    service.beta.kubernetes.io/aws-load-balancer-target-type: ip
+spec:
+  type: LoadBalancer
+  selector:
+    app: bootcamp-node
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+

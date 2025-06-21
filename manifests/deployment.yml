@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bootcamp-node-app
+  namespace: bootcamp
+  labels:
+    app: bootcamp-node
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bootcamp-node
+  template:
+    metadata:
+      labels:
+        app: bootcamp-node
+    spec:
+      containers:
+      - name: web
+        image: aaleem1993/bootcamp-node-app:latest
+        ports:
+        - containerPort: 3000
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "250m"
+
