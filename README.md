@@ -1,4 +1,20 @@
-Here are some screenshots of the Project.
+**☸️ EKS Cluster Provisioning with Terraform**
+- ✅ Automated provisioning of AWS EKS Cluster with Terraform
+- ✅ Secure and scalable Kubernetes cluster setup
+- ✅ Infrastructure as Code (IaC) for reproducible, version-controlled environments
+
+**🌍 Project Overview**
+- 🚀 Fully automated EKS cluster creation
+- ⚒️ Infrastructure managed declaratively with Terraform
+- 🛡️ Secure, production-ready networking (VPC, subnets, security groups)
+
+**⚙️ Prerequisites**
+- ✅ AWS CLI configured with proper credentials
+- ✅ kubectl installed
+- ✅ Terraform v1.x installed
+- ✅ AWS account with permissions for EKS, VPC, EC2, IAM
+
+**Here are some screenshots of the Project:)**
 
 ![Screenshot 2025-06-21 133336](https://github.com/user-attachments/assets/5f2f0cb1-58e0-4a17-b438-dab506f03641)
 
