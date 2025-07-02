@@ -17,12 +17,6 @@ pipeline {
             }
         }
 
-        stage('Increment Version') {
-            steps {
-                sh 'npm version minor --no-git-tag-version'
-            }
-        }
-
         stage('Run Tests') {
             steps {
                 sh 'npm test'
@@ -31,10 +25,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                script {
-                    def version = sh(script: "node -p \"require('./package.json').version\"", returnStdout: true).trim()
-                    env.IMAGE_TAG = "${DOCKER_IMAGE}:${version}"
-                    sh "docker build -t ${env.IMAGE_TAG} ."
+                 sh 'docker build -t ${DOCKER_IMAGE}:latest .'
                 }
             }
         }
@@ -43,7 +34,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: "${DOCKER_CREDENTIALS_ID}", usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                     sh "echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin"
-                    sh "docker push ${env.IMAGE_TAG}"
+                    sh "docker push ${DOCKER_IMAGE}:latest"
                 }
             }
         }
